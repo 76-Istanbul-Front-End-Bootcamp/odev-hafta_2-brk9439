@@ -8,10 +8,12 @@ var person = {
   message: function () {    
     console.log("Hello, " + this.name)
   }
+  
 }
 
-var messageFunc = person.message
-messageFunc();
+person.message();
+
+
 
 
 /*  
