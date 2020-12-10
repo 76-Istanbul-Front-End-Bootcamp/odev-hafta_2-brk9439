@@ -30,12 +30,11 @@ var numbers = {
     this.numbers[0].map(function(number, numberIndex){
         const result = number * this.numbers[1];
         console.log(result)
-    })
+    }.bind(this))
   }
 };
 
 numbers.multiply();
-
 
 /* 
   Odev 3:
@@ -45,9 +44,23 @@ numbers.multiply();
   Ornek : isValidName(" J ohn") false donmeli
 */
 function isValidName(name){
-
+if(typeof name === "string" ){
+  if(name.length>=3 && name.indexOf(' ')==-1){
+  return true;
+  }
+  else{
+  return false;
+  }
 }
-
+else {return false;}
+};
+console.log(isValidName("Frank") === true);
+console.log(isValidName(false) === false);
+console.log(isValidName(null) === false);
+console.log(isValidName(undefined) === false);
+console.log(isValidName("") === false);
+console.log(isValidName("  \t\n") === false);
+console.log(isValidName("X") === false);
 /*
   Odev 4:
   Asagidaki katilimSaati fonksionu 2 arguman almaktadir.
@@ -61,7 +74,23 @@ function isValidName(name){
   Ornek: katilimSaati("5", "30") 150 sonucunu vermelidir.
 */
 function katilimSaati(dersSayisi, dersSuresi){
-
+if((typeof dersSayisi == "string" || typeof dersSayisi == "number") && (typeof dersSuresi == "string" || typeof dersSuresi == "number"))
+{
+  return parseFloat(dersSayisi) * parseFloat(dersSuresi); 
 }
-
+else{
+  return false;
+}
+}
+console.log(katilimSaati(false,false) === false);
+console.log(katilimSaati(false,true) === false);
+console.log(katilimSaati(true,false) === false);
+console.log(katilimSaati(true,true) === false);
+console.log(katilimSaati(10,6) === 60);
+console.log(katilimSaati(10,"6") === 60);
+console.log(katilimSaati("10",6) === 60);
+console.log(katilimSaati("10","6") === 60);
+console.log(katilimSaati(6,10.1) === 60.599999999999994);
+console.log(katilimSaati(6.1,10) === 61);
+console.log(katilimSaati(6,"10.1") === 60.599999999999994);
 
